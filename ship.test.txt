@@ -1,0 +1,10 @@
+/* import {Ship} from './ship.js';
+
+describe('Ship class', ()=>{
+    let newShip;
+    beforeEach(()=>{
+        newShip = new Ship ([[1,1], [1,2], [1,3]], 0, 'canoe');
+    })
+})
+
+ */
