@@ -32,7 +32,11 @@ export function Gameboard(size) {
             ptsArr.forEach(pt => {
                 this.points[pt[0]][pt[1]].name = shipName;
                 this.shipPoints ++;
+                // Shows some animation
+
             })    
+        }else{
+            // Shows some animation
         }
     }
 

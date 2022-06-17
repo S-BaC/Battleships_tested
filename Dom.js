@@ -7,7 +7,7 @@ export function Dom (data) {
 
     this.boardSize = $('#boardSize').val();
     this.gameBoard = new Gameboard(this.boardSize);
-    
+
     for(let i = 0; i<this.boardSize; i++){
         for(let j = 0; j<this.boardSize; j++){
             $('#board01').html(
@@ -16,7 +16,6 @@ export function Dom (data) {
         }
     }
 
-    this.placeable = true;
     this.shipPts = [];
     
     this.calcShipPts = function (arr) {
@@ -42,7 +41,7 @@ export function Dom (data) {
                 //  Hits the board
                 let hitPt = [[...e.target.id][0],[...e.target.id][2]];
                 gameBoard.hit(hitPt);
-            } else if (this.p1Turn && !this.game && this.placeable){
+            } else if (this.p1Turn && !this.game){
                 // Places the ship
                 calcShipPts([[...e.target.id][0],[...e.target.id][2]]);
                 gameBoard.addShip(this.shipPts);

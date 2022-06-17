@@ -8,3 +8,4 @@ Applied Jest for unit testings.
 RECORD
 
 Started on 2022 June 17, 8:55 PM.
+JS files: 9:00PM to 10:30PM
