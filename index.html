@@ -9,78 +9,49 @@
     <link rel="stylesheet" href="dist.css">
 </head>
 <body class="bg-gray-700 flex flex-col items-center">
+    <!-- HEADER -->
     <p class="text-2xl text-sky-300 text-center py-4 mt-8">BATTLESHIPS</p>
 
+    <!-- GAME SETTINGS FORM -->
     <form class="rounded-lg border-2 border-sky-300 flex flex-col items-center gap-8 p-4 w-auto mt-12" id="gameForm">
-        <div  class="flex items-center gap-2">
-            <label for="p1Name" class="text-slate-100"> Player 1 </label>
-            <input type="text" value="Morgan" id="p1Name" class="bg-slate-500 text-center text-sky-200"/>
-        </div>
-        <div  class="flex items-center gap-2">
+        <!-- player names -->
+        <input type="text" value="Morgan" id="p1Name" class="bg-gray-700 text-center text-sky-200"/>
+        <p class="text-slate-300">Vs.</p>
+        <input type="text" value="Johnny" id="p2Name" class="bg-gray-700 text-center text-sky-200"/>
 
-            <label for="p2Name" class="text-slate-100"> Player 2 </label>
-            <input type="text" value="Johnny" id="p2Name" class="bg-slate-500 text-center text-sky-200"/>
-        </div>
+        <!-- board size -->
         <div class="flex items-center gap-2">
-            <label for="boardSize" class="text-slate-100">Board Size</label>
-            <input type="number" value="5" id="boardSize" class="bg-slate-500 text-center text-sky-200 w-12">
+            <label for="boardSize" class="text-slate-100">Board Size:</label>
+            <input type="number" value="5" id="boardSize" class="bg-gray-700 text-center text-sky-200 w-12">
         </div>
         
-        <button class="text-slate-900 bg-sky-300 p-2">Submit</button>
+        <!-- start button -->
+        <button class="text-slate-900 bg-sky-300 p-2 rounded-lg">Start!</button>
     </form>
 
-    <div class="ships p-8 absolute top-24 left-12 bg-slate-800 rounded-lg hidden">
+    <!-- PLACING SHIPS -->
+    <div class="ships p-8 absolute top-8 left-12 bg-slate-800 rounded-lg hidden">
         <p class="text-lg font-semibold text-slate-300 text-center"> Choose Ships</p>
-        <button id="shipPos" class="text-sky-300 mt-4">Horizontal</button>
-        <div class=""></div>
+        <button id="shipPos" class="text-sky-300  mt-4">Horizontal</button>
+        <div class="w-24 md:w-36 text-sky-700">
+            <!-- ship photos inserted here via Dom.js -->
+        </div>
     </div>
 
+    <!-- GAME BOARDS -->
     <div class="gameBoards flex gap-8 hidden">
-        <div id="board01">
-            <p id="p01Name"></p>
-            <div class="flex">
-                <div id="0-0-01" class="boardSq"></div>
-                <div id="0-1-01" class="boardSq"></div>
-                <div id="0-2-01" class="boardSq"></div> 
-            </div>
-            <div class="flex">
-                <div id="1-0-01" class="boardSq"></div>
-                <div id="1-1-01" class="boardSq"></div>
-                <div id="1-2-01" class="boardSq"></div>   
-            </div>
-            <div class="flex">
-                <div id="2-0-01" class="boardSq"></div>
-                <div id="2-1-01" class="boardSq"></div>
-                <div id="2-2-01" class="boardSq"></div>   
-            </div>
-        </div>
-
-        <div id="board02" class="hidden">
-            <p id="p02Name"></p>
-            <div class="flex">
-                <div id="0-0-02" class="boardSq"></div>
-                <div id="0-1-02" class="boardSq"></div>
-                <div id="0-2-02" class="boardSq"></div> 
-            </div>
-            <div class="flex">
-                <div id="1-0-02" class="boardSq"></div>
-                <div id="1-1-02" class="boardSq"></div>
-                <div id="1-2-02" class="boardSq"></div>   
-            </div>
-            <div class="flex">
-                <div id="2-0-02" class="boardSq"></div>
-                <div id="2-1-02" class="boardSq"></div>
-                <div id="2-2-02" class="boardSq"></div>   
-            </div>
-        </div>
+        <div id="board01"></div>
+        <div id="board02"></div>
     </div>
 
-    <div class="winningmsg">
-        <p class="text-sky-300 text-center mt-8"></p>
+    <!-- AFTER THE GAME -->
+    <div class="winningmsg text-center">
+        <p class="text-sky-300 text-center mt-4"></p>
     </div>
 
-    <div class="bottom text-center text-slate-300 text-sm absolute bottom-8">
-        <p>Made by <a href="">SHO</a> for a <a href="">TOP</a> Assignment </p>
+    <!-- FOOTER -->
+    <div class="footer text-center text-slate-100 text-sm absolute bottom-2 md:bottom-8">
+        <p>Made by <a href="https://github.com/S-BaC/Battleships_tested" target="_blank">SHO</a> for a <a href="https://theodinproject.com/" target="_blank">TOP</a> Assignment </p>
     </div>
 </body>
 </html>

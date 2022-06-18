@@ -1,5 +1,9 @@
 {
     "data": {
+        "shipPhotos": {
+            "photo01": "./images/download.png",
+            "photo02": "./images/download.jpg"
+        },
         "shipTypes": {
             "carrier": {
                 "length": 5,

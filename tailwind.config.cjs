@@ -9,3 +9,5 @@ module.exports = {
   },
   plugins: [],
 }
+
+// npx tailwindcss -i ./source.css -o ./dist.css --watch

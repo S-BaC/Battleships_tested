@@ -1,11 +1,14 @@
+//  The script to link html with all script files.
+
 import { Dom } from "./Dom.js"
 
-let domObj;
+let domObj; // The DOM class.
 
 $(document).ready(()=>{
-    console.log('ready');
     $('form').submit(e=>{
         e.preventDefault();
+
+        // Gets data from the json file and starts the program.
         fetch('../shipData.json')
             .then(res => res.json())
             .then(data => {
@@ -18,5 +21,3 @@ $(document).ready(()=>{
         $('.gameboards')[0].classList.remove('hidden');
     })
 })
-
-// console.log('hello');
