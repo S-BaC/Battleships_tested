@@ -6,41 +6,41 @@ export function Dom (data) {
     this.turn = '01';
     this.placeable = true;
 
-    this.boardSize = $('#boardSize').val();
-    this.gameboard01 = new Gameboard(this.boardSize);
-    this.gameboard02 = new Gameboard(this.boardSize);
+    this.initialize = function () {
+        this.boardSize = $('#boardSize').val();
+        this.gameboard01 = new Gameboard(this.boardSize);
+        this.gameboard02 = new Gameboard(this.boardSize);
+    
+        this.board01 = `<p id="p01Name" class="py-4 text-slate-300">${$('#p1Name').val()}</p>`; 
+        this.board02 = `<p id="p02Name" class="py-4 text-slate-300">${$('#p2Name').val()}</p>`;
 
-    this.board01 = `<p id="p01Name" class="py-4 text-slate-300">${$('#p1Name').val()}</p>`; 
-    this.board02 = `<p id="p02Name" class="py-4 text-slate-300">${$('#p2Name').val()}</p>`;
-
-    for(let i = 0; i<this.boardSize; i++){
-        this.board01 += '<div class="flex">'
-        this.board02 += '<div class="flex">'
-        for(let j = 0; j<this.boardSize; j++){
-            this.board01 += 
-                `<div id="${i}-${j}-01" class="boardSq"></div>`;
-            this.board02 += 
-                `<div id="${i}-${j}-02" class="boardSq"></div>`;
+        for(let i = 0; i<this.boardSize; i++){
+            this.board01 += '<div class="flex">'
+            this.board02 += '<div class="flex">'
+            for(let j = 0; j<this.boardSize; j++){
+                this.board01 += 
+                    `<div id="${i}-${j}-01" class="boardSq"></div>`;
+                this.board02 += 
+                    `<div id="${i}-${j}-02" class="boardSq"></div>`;
+            }
+            this.board01 += '</div>';
+            this.board02 += '</div>';
         }
-        this.board01 += '</div>';
-        this.board02 += '</div>';
+        this.board01 += `<button class="text-slate-300">Pass to ${$('#p2Name').val()}</button>`;
+        this.board02 += '<button class="text-slate-300"> START </button>';
+        $('#board01').html(this.board01);
+        $('#board02').html(this.board02);
+    
+        for(let ship in data.data.shipTypes){
+            // Ship Choosing Panel
+            $('.ships > div').append(
+                `<div class="ship mt-8" id="${ship}">
+                    <img src="${data.data.shipTypes[ship].image}" alt="" class="w-24">
+                    <p class="text-center text-slate-300 m-4">${ship}</p>
+                </div>`
+            )
+        }
     }
-    this.board01 += `<button class="text-slate-300">Pass to ${$('#p2Name').val()}</button>`;
-    this.board02 += '<button class="text-slate-300"> START </button>';
-    $('#board01').html(this.board01);
-    $('#board02').html(this.board02);
-
-    for(let ship in data.data.shipTypes){
-        // Ship Choosing Panel
-        $('.ships > div').append(
-            `<div class="ship mt-8" id="${ship}">
-                <img src="${data.data.shipTypes[ship].image}" alt="" class="w-24">
-                <p class="text-center text-slate-300 m-4">${ship}</p>
-            </div>`
-        )
-    }
-
-    // this.shipPts = [];
 
     this.setupListeners = function () {
         let currTarget = '';
@@ -68,6 +68,8 @@ export function Dom (data) {
             $('#board02 .boardSq').unbind();
             $('#shipPos').unbind();
             $('.ship').unbind();
+
+            this.gameListeners();
         })
 
         $('.boardSq').hover((e) => {
@@ -103,10 +105,8 @@ export function Dom (data) {
         })
 
         $('.ship')[0].click();
-
     }
 
-    
     this.calcShipPts = function (arr, shipPosition) {
 
         this.shipPts = [];
@@ -135,21 +135,40 @@ export function Dom (data) {
         if (shipFilled < len) {this.placeable = false;}
     }
 
-    
     this.gameListeners = function () {
-
-        $('#board01').click(e => {
-            if(!this.p1Turn && this.game){
-                //  Hits the board
+        $('#board01 .boardSq').click((e) => {
+            if(this.turn === '02'){
                 let hitPt = [[...e.target.id][0],[...e.target.id][2]];
-                gameboard01.hit(hitPt);
-            } else if (this.p1Turn && !this.game){
-                // Places the ship
-                calcShipPts([[...e.target.id][0],[...e.target.id][2]]);
-                this.gameboard01.addShip(this.shipPts);
+                this.result(this.gameboard01.hit(hitPt), e.target); 
             }
-        })
+        });
+
+        $('#board02 .boardSq').click((e) => {
+            if(this.turn === '01'){
+                let hitPt = [[...e.target.id][0],[...e.target.id][2]];
+                this.result(this.gameboard02.hit(hitPt), e.target);         
+            }
+        });
+    }
+    this.result = function (result, obj) {
+        switch (result) {
+            case 1: obj.classList.add('bg-sky-300'); 
+                    this.gameOver(); break;
+            case 2: obj.classList.add('bg-sky-300');
+                    this.turn = this.turn === '01'? '02' : '01'; break; 
+            case 3: obj.classList.add('bg-gray-700');
+        }
     }
 
-    this.setupListeners();
+    this.gameOver = function () {
+        $('#board01 .boardSq').unbind();
+        $('#board02 .boardSq').unbind();
+        let winner = this.turn === '01'? $('#p1Name').val() : $('#p2Name').val();
+        $('.winningmsg p').html(
+            `Congratulations to ${winner} !
+            <br> Here is a trophy for you - <br>
+            🚢
+            `
+        )
+    }
 }
