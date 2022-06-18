@@ -4,13 +4,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Battleships</title>
-    <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/jquery-3.6.0.min.js" defer></script>
+    <script type="module" src="./scripts/index.js" defer></script>
     <link rel="stylesheet" href="dist.css">
 </head>
 <body class="bg-gray-700 flex flex-col items-center">
     <p class="text-2xl text-sky-300 text-center py-4 mt-8">BATTLESHIPS</p>
 
-    <form class="rounded-lg border-2 border-sky-300 flex flex-col items-center gap-8 p-4 w-auto mt-12 hidden">
+    <form class="rounded-lg border-2 border-sky-300 flex flex-col items-center gap-8 p-4 w-auto mt-12" id="gameForm">
         <div  class="flex items-center gap-2">
             <label for="p1Name" class="text-slate-100"> Player 1 </label>
             <input type="text" value="Morgan" id="p1Name" class="bg-slate-500 text-center text-sky-200"/>
@@ -28,27 +29,15 @@
         <button class="text-slate-900 bg-sky-300 p-2">Submit</button>
     </form>
 
-    <div class="ships p-8 absolute lg:top-24 lg:left-12 bottom-24 bg-slate-800 rounded-lg">
+    <div class="ships p-8 absolute top-24 left-12 bg-slate-800 rounded-lg hidden">
         <p class="text-lg font-semibold text-slate-300 text-center"> Choose Ships</p>
-        <div class="flex lg:block">
-            <div class="ship mt-8">
-                <img src="./images/ship01.png" alt="" class="w-24">
-                <p class="text-center text-slate-300 m-4">Carrier</p>
-            </div>
-            <div class="ship mt-8">
-                <img src="./images/ship02.png" alt="" class="w-24">
-                <p class="text-center text-slate-300 m-4">Support</p>
-            </div>
-            <div class="ship mt-8">
-                <img src="./images/ship03.png" alt="" class="w-24">
-                <p class="text-center text-slate-300 m-4">Canoe</p>
-            </div>
-        </div>
-        
+        <button id="shipPos" class="text-sky-300 mt-4">Horizontal</button>
+        <div class=""></div>
     </div>
 
-    <div class="gameBoards flex gap-8">
+    <div class="gameBoards flex gap-8 hidden">
         <div id="board01">
+            <p id="p01Name"></p>
             <div class="flex">
                 <div id="0-0-01" class="boardSq"></div>
                 <div id="0-1-01" class="boardSq"></div>
@@ -67,6 +56,7 @@
         </div>
 
         <div id="board02" class="hidden">
+            <p id="p02Name"></p>
             <div class="flex">
                 <div id="0-0-02" class="boardSq"></div>
                 <div id="0-1-02" class="boardSq"></div>

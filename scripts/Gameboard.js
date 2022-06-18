@@ -19,11 +19,13 @@ export function Gameboard(size) {
     };
 
     this.buildBoard();
+    console.log(this.points);
 
     this.addShip = function (ptsArr, shipName) {
         let shipExi = false;
         ptsArr.forEach(pt => {
-            if (this.points[pt[0]][pt[1]].name) {
+            console.log(this.points[Number(pt[0])][Number(pt[1])])
+            if (this.points[Number(pt[0])][Number(pt[1])].name) {
                 shipExi = true;
                 return;
             }
@@ -33,11 +35,11 @@ export function Gameboard(size) {
                 this.points[pt[0]][pt[1]].name = shipName;
                 this.shipPoints ++;
                 // Shows some animation
-
             })    
         }else{
             // Shows some animation
         }
+        return shipExi;
     }
 
     this.hit = function (point) {
@@ -52,7 +54,3 @@ export function Gameboard(size) {
         }
     }
 }
-
-let gb = new Gameboard(10);
-gb.addShip([[1,1],[1,2],[1,3]], 'carrier');
-gb.hit([1,1]);

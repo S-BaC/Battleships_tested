@@ -3,15 +3,15 @@
         "shipTypes": {
             "carrier": {
                 "length": 5,
-                "image": ""
+                "image": "./images/ship01.png"
             },
             "support": {
                 "length": 3,
-                "image": ""
+                "image": "./images/ship02.png"
             },
             "canoe": {
                 "length": 2,
-                "image": ""
+                "image": "./images/ship03.png"
             }
         }
     }
