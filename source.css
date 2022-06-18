@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .boardSq {
+        @apply  w-8 h-8 bg-sky-700 border border-slate-700
+    }
+}

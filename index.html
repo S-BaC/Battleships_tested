@@ -1,0 +1,92 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battleships</title>
+    <script src="./scripts/index.js" defer></script>
+    <link rel="stylesheet" href="dist.css">
+</head>
+<body class="bg-gray-700 flex flex-col items-center">
+    <p class="text-2xl text-sky-300 text-center py-4 mt-8">BATTLESHIPS</p>
+
+    <form class="rounded-lg border-2 border-sky-300 flex flex-col items-center gap-8 p-4 w-auto mt-12 hidden">
+        <div  class="flex items-center gap-2">
+            <label for="p1Name" class="text-slate-100"> Player 1 </label>
+            <input type="text" value="Morgan" id="p1Name" class="bg-slate-500 text-center text-sky-200"/>
+        </div>
+        <div  class="flex items-center gap-2">
+
+            <label for="p2Name" class="text-slate-100"> Player 2 </label>
+            <input type="text" value="Johnny" id="p2Name" class="bg-slate-500 text-center text-sky-200"/>
+        </div>
+        <div class="flex items-center gap-2">
+            <label for="boardSize" class="text-slate-100">Board Size</label>
+            <input type="number" value="5" id="boardSize" class="bg-slate-500 text-center text-sky-200 w-12">
+        </div>
+        
+        <button class="text-slate-900 bg-sky-300 p-2">Submit</button>
+    </form>
+
+    <div class="ships p-8 absolute lg:top-24 lg:left-12 bottom-24 bg-slate-800 rounded-lg">
+        <p class="text-lg font-semibold text-slate-300 text-center"> Choose Ships</p>
+        <div class="flex lg:block">
+            <div class="ship mt-8">
+                <img src="./images/ship01.png" alt="" class="w-24">
+                <p class="text-center text-slate-300 m-4">Carrier</p>
+            </div>
+            <div class="ship mt-8">
+                <img src="./images/ship02.png" alt="" class="w-24">
+                <p class="text-center text-slate-300 m-4">Support</p>
+            </div>
+            <div class="ship mt-8">
+                <img src="./images/ship03.png" alt="" class="w-24">
+                <p class="text-center text-slate-300 m-4">Canoe</p>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="gameBoards flex gap-8">
+        <div id="board01">
+            <div class="flex">
+                <div id="0-0-01" class="boardSq"></div>
+                <div id="0-1-01" class="boardSq"></div>
+                <div id="0-2-01" class="boardSq"></div> 
+            </div>
+            <div class="flex">
+                <div id="1-0-01" class="boardSq"></div>
+                <div id="1-1-01" class="boardSq"></div>
+                <div id="1-2-01" class="boardSq"></div>   
+            </div>
+            <div class="flex">
+                <div id="2-0-01" class="boardSq"></div>
+                <div id="2-1-01" class="boardSq"></div>
+                <div id="2-2-01" class="boardSq"></div>   
+            </div>
+        </div>
+
+        <div id="board02" class="hidden">
+            <div class="flex">
+                <div id="0-0-02" class="boardSq"></div>
+                <div id="0-1-02" class="boardSq"></div>
+                <div id="0-2-02" class="boardSq"></div> 
+            </div>
+            <div class="flex">
+                <div id="1-0-02" class="boardSq"></div>
+                <div id="1-1-02" class="boardSq"></div>
+                <div id="1-2-02" class="boardSq"></div>   
+            </div>
+            <div class="flex">
+                <div id="2-0-02" class="boardSq"></div>
+                <div id="2-1-02" class="boardSq"></div>
+                <div id="2-2-02" class="boardSq"></div>   
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom text-center text-slate-300 text-sm absolute bottom-8">
+        <p>Made by <a href="">SHO</a> for a <a href="">TOP</a> Assignment </p>
+    </div>
+</body>
+</html>

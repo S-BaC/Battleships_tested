@@ -1,0 +1,18 @@
+{
+    "data": {
+        "shipTypes": {
+            "carrier": {
+                "length": 5,
+                "image": ""
+            },
+            "support": {
+                "length": 3,
+                "image": ""
+            },
+            "canoe": {
+                "length": 2,
+                "image": ""
+            }
+        }
+    }
+}
