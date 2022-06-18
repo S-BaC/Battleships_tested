@@ -12,12 +12,17 @@
     <!-- HEADER -->
     <p class="text-2xl text-sky-300 text-center py-4 mt-8">BATTLESHIPS</p>
 
+    
+
     <!-- GAME SETTINGS FORM -->
-    <form class="rounded-lg border-2 border-sky-300 flex flex-col items-center gap-8 p-4 w-auto mt-12" id="gameForm">
+    <form class="rounded-lg border-none border-sky-300 flex flex-col items-center gap-8 p-4 w-auto mt-12" id="gameForm">
         <!-- player names -->
-        <input type="text" value="Morgan" id="p1Name" class="bg-gray-700 text-center text-sky-200"/>
-        <p class="text-slate-300">Vs.</p>
-        <input type="text" value="Johnny" id="p2Name" class="bg-gray-700 text-center text-sky-200"/>
+        <div class="flex">
+            <input type="text" value="Morgan" id="p1Name" class="bg-gray-700 text-center text-sky-200"/>
+            <p class="text-slate-300">Vs.</p>
+            <input type="text" value="Johnny" id="p2Name" class="bg-gray-700 text-center text-sky-200"/> 
+        </div>
+        
 
         <!-- board size -->
         <div class="flex items-center gap-2">
@@ -50,8 +55,11 @@
     </div>
 
     <!-- FOOTER -->
+    <div class="w-8 h-8 md:w-12 md:h-12 lg:w-14 lg:h-14 bg-sky-700 bg-gray-700 bg-sky-300 border border-slate-700 bg-slate-300 bg-sky-300 w-24 md:w-36 hidden"></div>
     <div class="footer text-center text-slate-100 text-sm absolute bottom-2 md:bottom-8">
         <p>Made by <a href="https://github.com/S-BaC/Battleships_tested" target="_blank">SHO</a> for a <a href="https://theodinproject.com/" target="_blank">TOP</a> Assignment </p>
     </div>
 </body>
 </html>
+
+<!-- npx tailwindcss -i ./source.css -o ./dist.css --watch -->

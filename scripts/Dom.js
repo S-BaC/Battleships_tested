@@ -21,9 +21,9 @@ export function Dom (data) {
             this.board02 += '<div class="flex">'
             for(let j = 0; j<this.boardSize; j++){
                 this.board01 += 
-                    `<div id="${i}-${j}-01" class="boardSq"></div>`;
+                    `<div id="${i}-${j}-01" class="boardSq w-8 h-8 md:w-12 md:h-12 lg:w-14 lg:h-14 bg-sky-700 border border-slate-700"></div>`;
                 this.board02 += 
-                    `<div id="${i}-${j}-02" class="boardSq"></div>`;
+                    `<div id="${i}-${j}-02" class="boardSq w-8 h-8 md:w-12 md:h-12 lg:w-14 lg:h-14 bg-sky-700 border border-slate-700"></div>`;
             }
             this.board01 += '</div>';
             this.board02 += '</div>';
@@ -67,7 +67,7 @@ export function Dom (data) {
             $('.gameBoards button')[0].classList.add('hidden');
             $('.gameBoards button')[1].classList.add('hidden');
             [...$('.boardSq')].forEach(sq => {
-                sq.classList.remove('bg-sky-300');
+                sq.classList.remove('bg-slate-300');
                 sq.innerHTML = '';
             });
 
@@ -135,7 +135,7 @@ export function Dom (data) {
         this.placeable = true;
         let shipFilled = 0;
         [...$('.boardSq')].forEach(sq => {
-            sq.classList.remove('bg-sky-300');
+            sq.classList.remove('bg-slate-300');
         });
 
         let len = data.data.shipTypes[this.chosenShip].length;
@@ -149,7 +149,7 @@ export function Dom (data) {
         }
         this.shipPts.forEach(shipPt => {
             if(shipPt[0] < this.boardSize && shipPt[1] < this.boardSize) {
-                $(`#${shipPt[0]}-${shipPt[1]}-${this.turn}`)[0].classList.add('bg-sky-300');
+                $(`#${shipPt[0]}-${shipPt[1]}-${this.turn}`)[0].classList.add('bg-slate-300');
                 shipFilled ++;
             }
         })
@@ -170,7 +170,7 @@ export function Dom (data) {
                 case 2: obj.innerHTML = 
                         `<img src="${data.data.shipPhotos.photo02}" c>`;
                         this.turn = this.turn === '01'? '02' : '01'; break; 
-                case 3: obj.classList.add('bg-gray-700');
+                case 3: obj.classList.add('bg-slate-300');
                         this.turn = this.turn === '01'? '02' : '01';
             }
         }

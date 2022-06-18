@@ -6,7 +6,4 @@
     .boardSq {
         @apply  w-8 h-8 md:w-12 md:h-12 lg:w-14 lg:h-14 bg-sky-700 border border-slate-700
     }
-    .ship img{
-        @apply w-12
-    }
 }
